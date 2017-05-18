@@ -1,0 +1,46 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>99love's blog--缘梦动力</title>
+</head>
+<SCRIPT LANGUAGE=JavaScript>
+<!--
+var InternetExplorer = navigator.appName.indexOf("Microsoft") != -1;
+// Handle all the the FSCommand messages in a Flash movie
+function scriptmain_DoFSCommand(command, args) {
+  var scriptmainObj = InternetExplorer ? scriptmain : document.scriptmain;
+	if(command == "setwinheight"){
+		scriptmain.style.pixelHeight=args;
+	}
+}
+// Hook for Internet Explorer 
+if (navigator.appName && navigator.appName.indexOf("Microsoft") != -1 && 
+	  navigator.userAgent.indexOf("Windows") != -1 && navigator.userAgent.indexOf("Windows 3.1") == -1) {
+	document.write('<SCRIPT LANGUAGE=VBScript\> \n');
+	document.write('on error resume next \n');
+	document.write('Sub scriptmain_FSCommand(ByVal command, ByVal args)\n');
+	document.write('  call scriptmain_DoFSCommand(command, args)\n');
+	document.write('end sub\n');
+	document.write('</SCRIPT\> \n');
+}
+//-->
+</SCRIPT>
+
+<body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+<table id="mainTable" width="775" height="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td align="center" valign="top" background="../images/mainbg.jpg"> 
+      <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" id=scriptmain name=scriptmain codebase="_activeX/swflash.cab#version=6,0,29,0" width="746" height="100%">
+        <param name="movie" value="gbtest.swf">
+        <param name="quality" value="high">
+        <PARAM NAME=salign VALUE=T>
+        <PARAM NAME=scale VALUE=noscale>
+        <param name="LOOP" value="false">
+        <param name="menu" value="false">
+        <embed src="gbtest.swf" width="746" height="100%" loop="false" quality="high" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" salign="T" name="scriptmain" menu="false"></embed></object>
+    </td>
+  </tr>
+</table>
+</body>
+</html>

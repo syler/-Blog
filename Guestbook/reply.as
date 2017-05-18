@@ -1,0 +1,69 @@
+message=_root.curContent;
+Editor.ftext="";
+sendBTN.onRelease=function(){
+	var errmsg="";
+	if(Editor.ftext=="") errmsg=errmsg+" 回复内容 ";
+	if(errmsg!=""){
+		attachMovie("SendingBox","sendBox",10);
+		sendBox._x=146;
+		SendBox._y=100;
+		sendBox.sText="您的"+errmsg+"不能为空！";
+		sendBox.btn.text="OK";
+		sendBox.btn.onRelease=function(){
+			this._parent.removeMovieClip();
+		}
+		return;
+	}
+	
+	var sstr="........."
+	var myLoadVars=new LoadVars();
+	    myLoadVars.idNumber=_root.curNum;
+	    myLoadVars.ftext=Editor.EditBox.htmlText;
+	    myLoadVars.SendFlag=0;
+	    myLoadvars.sendAndLoad(_root.URLpreFix+"reply.asp",myLoadvars,"POST");			
+		myLoadvars.onLoad=function(success){
+			if(success){
+				if(this.SendFlag==1){
+					sendBox.onEnterFrame=null;
+					sendBox.sText="回复成功！";
+					sendBox.btn.text="OK";				
+					sendBox.btn.onRelease=function(){
+						_root.Body.attachMovie("msglist","msgList",1);
+					}
+				}
+				if(this.SendFlag==3){
+						sendBox.onEnterFrame=null;
+						sendBox.sText="您回复的留言不存在！";
+						sendBox.btn.text="OK";				
+					}
+				if(this.SendFlag==4){
+						sendBox.onEnterFrame=null;
+						sendBox.sText="只有管理员才能回复留言！";
+						sendBox.btn.text="OK";				
+					}	
+			}else{
+ 					sendBox.onEnterFrame=null;
+					sendBox.sText="异常错误#2！";
+					sendBox.btn.text="OK";
+			}
+		}		
+		attachMovie("SendingBox","sendBox",10);
+		sendBox._x=146;
+		SendBox._y=100;
+		sendBox.onEnterFrame=function(){
+			sendBox.sText="正在发送数据"+sstr.substr(0,random(6));
+		}
+		sendBox.btn.text="Cancel";
+		sendBox.btn.onRelease=function(){
+			this._parent.removeMovieClip();		
+		}
+}
+
+resetBTN.onRelease=function(){
+	ftext="";
+	Editor.ftext="";
+}
+exitBTN.onRelease=function(){
+	_root.Body.attachMovie("msgList","msgList",1);
+}
+stop();
